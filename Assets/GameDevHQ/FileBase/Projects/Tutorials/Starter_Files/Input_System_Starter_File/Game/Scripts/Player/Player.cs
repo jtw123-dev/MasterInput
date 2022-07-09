@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Scripts.LiveObjects;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 namespace Game.Scripts.Player
 {
@@ -21,6 +22,9 @@ namespace Game.Scripts.Player
         private CinemachineVirtualCamera _followCam;
         [SerializeField]
         private GameObject _model;
+
+
+        private InputPlayerActions _input;
 
 
         private void OnEnable()
@@ -46,6 +50,23 @@ namespace Game.Scripts.Player
 
             if (_anim == null)
                 Debug.Log("Failed to connect the Animator");
+
+            _input = new InputPlayerActions();
+            _input.Player.Enable();
+            _input.Player.Movement.performed += Movement_performed;
+            _input.Player.Rotation.performed += Rotation_performed;
+
+
+        }
+
+        private void Rotation_performed(InputAction.CallbackContext obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void Movement_performed(InputAction.CallbackContext obj)
+        {
+            throw new System.NotImplementedException();
         }
 
         private void Update()
@@ -57,8 +78,18 @@ namespace Game.Scripts.Player
 
         private void CalcutateMovement()
         {
+            var rotateDirection = _input.Player.Rotation.ReadValue<float>();
+            // transform.Rotate(Vector3.up * Time.deltaTime * 90f * rotateDirection);
+            transform.Rotate(transform.up, rotateDirection );
+
+
+            var move = _input.Player.Movement.ReadValue<Vector2>();
+            transform.Translate(new Vector3(move.x, 0, move.y) * Time.deltaTime * 5);
+
             _playerGrounded = _controller.isGrounded;
-            float h = Input.GetAxisRaw("Horizontal");
+            _anim.SetFloat("Speed", Mathf.Abs(move.magnitude));
+           
+            /*float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
 
             transform.Rotate(transform.up, h);
@@ -67,7 +98,7 @@ namespace Game.Scripts.Player
             var velocity = direction * _speed;
 
 
-            _anim.SetFloat("Speed", Mathf.Abs(velocity.magnitude));
+            
 
 
             if (_playerGrounded)
@@ -78,7 +109,7 @@ namespace Game.Scripts.Player
             }
             
             _controller.Move(velocity * Time.deltaTime);                      
-
+    */
         }
 
         private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
