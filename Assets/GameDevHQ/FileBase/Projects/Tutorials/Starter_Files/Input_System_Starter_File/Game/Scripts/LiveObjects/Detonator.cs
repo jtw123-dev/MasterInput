@@ -12,15 +12,18 @@ namespace Game.Scripts.LiveObjects
         private MeshRenderer _render;
         [SerializeField]
         private InteractableZone[] _interactableZone;
+        private InteractableZone _zone;
 
         private void OnEnable()
         {
             InteractableZone.onZoneInteractionComplete += InteractableZone_onZoneInteractionComplete;
+            Debug.Log("Detonater enabled.");
         }
 
         private void Start()
         {
             _render = GetComponent<MeshRenderer>();
+            _zone = GameObject.Find("Interactable_C4_Pickup_Zone").GetComponent<InteractableZone>();
         }
 
         private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
@@ -37,10 +40,14 @@ namespace Game.Scripts.LiveObjects
             if (_c4Placed == false)
                 return;
 
-            _c4.Explode();
-            _c4Placed = false;
-            _interactableZone[1].CompleteTask(2);
-            Destroy(this.gameObject);
+            else
+            {
+                _c4.Explode();
+                _c4Placed = false;
+                _interactableZone[1].CompleteTask(2);
+                Destroy(this.gameObject);
+            }
+           
         }
 
         void PlaceC4(Transform target)
@@ -49,6 +56,8 @@ namespace Game.Scripts.LiveObjects
             _c4.gameObject.SetActive(true);
             _c4Placed = true;
             _interactableZone[0].CompleteTask(1);
+           // _zone._explosionTrue = true;
+            Debug.Log("Placed");
         }
 
         public void Show()

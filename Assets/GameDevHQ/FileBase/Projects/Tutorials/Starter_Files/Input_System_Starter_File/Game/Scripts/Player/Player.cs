@@ -23,7 +23,7 @@ namespace Game.Scripts.Player
         [SerializeField]
         private GameObject _model;
 
-
+        public bool explosionTrue;
         private InputPlayerActions _input;
 
 
@@ -52,28 +52,16 @@ namespace Game.Scripts.Player
                 Debug.Log("Failed to connect the Animator");
 
             _input = new InputPlayerActions();
-            _input.Player.Enable();
-            _input.Player.Movement.performed += Movement_performed;
-            _input.Player.Rotation.performed += Rotation_performed;
-
-
+            _input.Player.Enable();   
+            
         }
 
-        private void Rotation_performed(InputAction.CallbackContext obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void Movement_performed(InputAction.CallbackContext obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
+        
         private void Update()
         {
             if (_canMove == true)
                 CalcutateMovement();
-
         }
 
         private void CalcutateMovement()
@@ -145,6 +133,7 @@ namespace Game.Scripts.Player
                
         private void TriggerExplosive()
         {
+           
             _detonator.TriggerExplosion();
         }
 

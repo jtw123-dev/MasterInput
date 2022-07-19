@@ -25,10 +25,18 @@ namespace Game.Scripts.LiveObjects
         private CinemachineVirtualCamera _droneCam;
         [SerializeField]
         private InteractableZone _interactableZone;
+        private InputPlayerActions _input;
         
 
         public static event Action OnEnterFlightMode;
         public static event Action onExitFlightmode;
+
+
+        private void Start()
+        {
+            _input = new InputPlayerActions();
+            //_input.Player.
+        }
 
         private void OnEnable()
         {

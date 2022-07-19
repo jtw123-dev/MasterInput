@@ -33,6 +33,30 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""fac5e0b9-317a-49cb-bd7a-bb587a2675e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Explosion"",
+                    ""type"": ""Button"",
+                    ""id"": ""5be246a0-a98d-4016-8ec6-4eeb07acd8ee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab20030f-4fc9-4b81-8da2-8e1be9addd8a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -123,6 +147,39 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91442447-4fb9-4e38-a783-f8f2200fb60c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b7de0f1-b0ab-4de6-9be1-0bfdca5ab8d8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Explosion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0627c2c-611d-48a3-bc31-8c3c70304779"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -133,6 +190,9 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+        m_Player_Explosion = m_Player.FindAction("Explosion", throwIfNotFound: true);
+        m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,12 +244,18 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Rotation;
+    private readonly InputAction m_Player_Interaction;
+    private readonly InputAction m_Player_Explosion;
+    private readonly InputAction m_Player_Escape;
     public struct PlayerActions
     {
         private @InputPlayerActions m_Wrapper;
         public PlayerActions(@InputPlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @Explosion => m_Wrapper.m_Player_Explosion;
+        public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -205,6 +271,15 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Rotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
+                @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Explosion.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExplosion;
+                @Explosion.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExplosion;
+                @Explosion.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExplosion;
+                @Escape.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -215,6 +290,15 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
+                @Explosion.started += instance.OnExplosion;
+                @Explosion.performed += instance.OnExplosion;
+                @Explosion.canceled += instance.OnExplosion;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -223,5 +307,8 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnExplosion(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }
