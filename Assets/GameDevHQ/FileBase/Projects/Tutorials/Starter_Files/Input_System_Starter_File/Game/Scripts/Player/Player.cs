@@ -26,6 +26,8 @@ namespace Game.Scripts.Player
         public bool explosionTrue;
         private InputPlayerActions _input;
 
+        private Drone _drone;
+
 
         private void OnEnable()
         {
@@ -41,6 +43,13 @@ namespace Game.Scripts.Player
 
         private void Start()
         {
+            _drone = GameObject.Find("DroneMaster").GetComponent<Drone>();
+
+            if (_drone==null)
+            {
+                Debug.LogError("No drone present");
+            }
+
             _controller = GetComponent<CharacterController>();
 
             if (_controller == null)
@@ -52,52 +61,34 @@ namespace Game.Scripts.Player
                 Debug.Log("Failed to connect the Animator");
 
             _input = new InputPlayerActions();
-            _input.Player.Enable();   
-            
+            _input.Player.Enable();              
         }
-
-        
         
         private void Update()
-        {
+        {            
             if (_canMove == true)
                 CalcutateMovement();
+
+            if (_drone._inFlightMode == true)
+            {
+                _input.Player.Disable();
+            }
+            else
+            {
+                _input.Player.Enable();
+            }
         }
 
         private void CalcutateMovement()
         {
             var rotateDirection = _input.Player.Rotation.ReadValue<float>();
-            // transform.Rotate(Vector3.up * Time.deltaTime * 90f * rotateDirection);
             transform.Rotate(transform.up, rotateDirection );
-
 
             var move = _input.Player.Movement.ReadValue<Vector2>();
             transform.Translate(new Vector3(move.x, 0, move.y) * Time.deltaTime * 5);
 
             _playerGrounded = _controller.isGrounded;
             _anim.SetFloat("Speed", Mathf.Abs(move.magnitude));
-           
-            /*float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-
-            transform.Rotate(transform.up, h);
-
-            var direction = transform.forward * v;
-            var velocity = direction * _speed;
-
-
-            
-
-
-            if (_playerGrounded)
-                velocity.y = 0f;
-            if (!_playerGrounded)
-            {
-                velocity.y += -20f * Time.deltaTime;
-            }
-            
-            _controller.Move(velocity * Time.deltaTime);                      
-    */
         }
 
         private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
@@ -132,8 +123,7 @@ namespace Game.Scripts.Player
         }
                
         private void TriggerExplosive()
-        {
-           
+        {         
             _detonator.TriggerExplosion();
         }
 
@@ -148,7 +138,6 @@ namespace Game.Scripts.Player
             Drone.OnEnterFlightMode -= ReleasePlayerControl;
             Drone.onExitFlightmode -= ReturnPlayerControl;
         }
-
     }
 }
 

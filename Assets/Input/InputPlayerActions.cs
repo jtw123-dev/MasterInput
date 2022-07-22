@@ -27,14 +27,6 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Rotation"",
-                    ""type"": ""Value"",
-                    ""id"": ""627b0df3-9cba-48ec-baa9-70b65ace537c"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""fac5e0b9-317a-49cb-bd7a-bb587a2675e4"",
@@ -55,6 +47,14 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""ab20030f-4fc9-4b81-8da2-8e1be9addd8a"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotation"",
+                    ""type"": ""Value"",
+                    ""id"": ""e7651ee0-0f60-4a69-9e39-ada008cc591c"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -116,39 +116,6 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""2bc7e02f-c104-499e-b7c1-5f264514dae0"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotation"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""ef0ffe14-2624-4f55-8112-b5b227cf830f"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""65109556-e261-4406-90af-bd25da5d3e59"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""91442447-4fb9-4e38-a783-f8f2200fb60c"",
                     ""path"": ""<Keyboard>/e"",
@@ -180,6 +147,218 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c6413dad-87bf-4392-81d0-ac8884c08384"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2"",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""591662db-c238-4ba6-871d-c2d6e0d43fe4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""14d957af-4b9d-419b-bf68-174567c24e89"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Drone"",
+            ""id"": ""b14a43b6-50e2-4926-8136-d9d653b47354"",
+            ""actions"": [
+                {
+                    ""name"": ""Thrust"",
+                    ""type"": ""Button"",
+                    ""id"": ""624929fb-1737-4ece-af4b-600b2f423831"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""bad17065-e5d7-443e-ab14-ca9ab3ce2758"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac9f118b-644e-46fb-94c2-302aa5799107"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""e17d805a-85ac-4122-b46c-3d837d0d14e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateA"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8bded2c-7644-4a0a-9d8b-fe9748a555ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateD"",
+                    ""type"": ""Button"",
+                    ""id"": ""66fb435b-ddf4-42f6-a5b5-cab3b9f8e406"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateW"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a06c90d-c277-44d8-922e-7286cede28a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RotateS"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6bd24d2-c0ee-46ee-bb30-1dd7bf04a7c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ReverseThrust"",
+                    ""type"": ""Button"",
+                    ""id"": ""276713f5-616e-4b63-bc0f-1e00b6ef4886"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""072ed341-f3b9-4867-a8eb-33bd93412a4a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83b1bbd9-45e8-481b-9ed8-6c9e7bad0eef"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c40e474-829b-4aef-aab8-980b06ea4858"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2d565f9-e90f-433c-badc-81de15bcb925"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebdaed20-472a-486d-989b-d70c6e5c22ac"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93be8b36-b06a-4b7a-9588-b1dcc5c5140f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6c0f400-7fc5-4bcf-8350-b187dbfe7c18"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateW"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44fe1f20-f58a-41d4-8505-c5fa03a333ae"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bd8e831-3fa3-481e-b345-1ad50a550e20"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReverseThrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -189,10 +368,21 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Explosion = m_Player.FindAction("Explosion", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
+        m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
+        // Drone
+        m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
+        m_Drone_Thrust = m_Drone.FindAction("Thrust", throwIfNotFound: true);
+        m_Drone_Escape = m_Drone.FindAction("Escape", throwIfNotFound: true);
+        m_Drone_RotateLeft = m_Drone.FindAction("RotateLeft", throwIfNotFound: true);
+        m_Drone_RotateRight = m_Drone.FindAction("RotateRight", throwIfNotFound: true);
+        m_Drone_RotateA = m_Drone.FindAction("RotateA", throwIfNotFound: true);
+        m_Drone_RotateD = m_Drone.FindAction("RotateD", throwIfNotFound: true);
+        m_Drone_RotateW = m_Drone.FindAction("RotateW", throwIfNotFound: true);
+        m_Drone_RotateS = m_Drone.FindAction("RotateS", throwIfNotFound: true);
+        m_Drone_ReverseThrust = m_Drone.FindAction("ReverseThrust", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -243,19 +433,19 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Rotation;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Explosion;
     private readonly InputAction m_Player_Escape;
+    private readonly InputAction m_Player_Rotation;
     public struct PlayerActions
     {
         private @InputPlayerActions m_Wrapper;
         public PlayerActions(@InputPlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Explosion => m_Wrapper.m_Player_Explosion;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
+        public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -268,9 +458,6 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Rotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
-                @Rotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
-                @Rotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
@@ -280,6 +467,9 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Escape.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEscape;
+                @Rotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
+                @Rotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
+                @Rotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -287,9 +477,6 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Rotation.started += instance.OnRotation;
-                @Rotation.performed += instance.OnRotation;
-                @Rotation.canceled += instance.OnRotation;
                 @Interaction.started += instance.OnInteraction;
                 @Interaction.performed += instance.OnInteraction;
                 @Interaction.canceled += instance.OnInteraction;
@@ -299,16 +486,128 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Rotation.started += instance.OnRotation;
+                @Rotation.performed += instance.OnRotation;
+                @Rotation.canceled += instance.OnRotation;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Drone
+    private readonly InputActionMap m_Drone;
+    private IDroneActions m_DroneActionsCallbackInterface;
+    private readonly InputAction m_Drone_Thrust;
+    private readonly InputAction m_Drone_Escape;
+    private readonly InputAction m_Drone_RotateLeft;
+    private readonly InputAction m_Drone_RotateRight;
+    private readonly InputAction m_Drone_RotateA;
+    private readonly InputAction m_Drone_RotateD;
+    private readonly InputAction m_Drone_RotateW;
+    private readonly InputAction m_Drone_RotateS;
+    private readonly InputAction m_Drone_ReverseThrust;
+    public struct DroneActions
+    {
+        private @InputPlayerActions m_Wrapper;
+        public DroneActions(@InputPlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Thrust => m_Wrapper.m_Drone_Thrust;
+        public InputAction @Escape => m_Wrapper.m_Drone_Escape;
+        public InputAction @RotateLeft => m_Wrapper.m_Drone_RotateLeft;
+        public InputAction @RotateRight => m_Wrapper.m_Drone_RotateRight;
+        public InputAction @RotateA => m_Wrapper.m_Drone_RotateA;
+        public InputAction @RotateD => m_Wrapper.m_Drone_RotateD;
+        public InputAction @RotateW => m_Wrapper.m_Drone_RotateW;
+        public InputAction @RotateS => m_Wrapper.m_Drone_RotateS;
+        public InputAction @ReverseThrust => m_Wrapper.m_Drone_ReverseThrust;
+        public InputActionMap Get() { return m_Wrapper.m_Drone; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DroneActions set) { return set.Get(); }
+        public void SetCallbacks(IDroneActions instance)
+        {
+            if (m_Wrapper.m_DroneActionsCallbackInterface != null)
+            {
+                @Thrust.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnThrust;
+                @Thrust.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnThrust;
+                @Thrust.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnThrust;
+                @Escape.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnEscape;
+                @RotateLeft.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateLeft;
+                @RotateLeft.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateLeft;
+                @RotateLeft.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateLeft;
+                @RotateRight.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateRight;
+                @RotateRight.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateRight;
+                @RotateRight.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateRight;
+                @RotateA.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateA;
+                @RotateA.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateA;
+                @RotateA.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateA;
+                @RotateD.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateD;
+                @RotateD.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateD;
+                @RotateD.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateD;
+                @RotateW.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateW;
+                @RotateW.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateW;
+                @RotateW.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateW;
+                @RotateS.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateS;
+                @RotateS.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateS;
+                @RotateS.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnRotateS;
+                @ReverseThrust.started -= m_Wrapper.m_DroneActionsCallbackInterface.OnReverseThrust;
+                @ReverseThrust.performed -= m_Wrapper.m_DroneActionsCallbackInterface.OnReverseThrust;
+                @ReverseThrust.canceled -= m_Wrapper.m_DroneActionsCallbackInterface.OnReverseThrust;
+            }
+            m_Wrapper.m_DroneActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Thrust.started += instance.OnThrust;
+                @Thrust.performed += instance.OnThrust;
+                @Thrust.canceled += instance.OnThrust;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
+                @RotateLeft.started += instance.OnRotateLeft;
+                @RotateLeft.performed += instance.OnRotateLeft;
+                @RotateLeft.canceled += instance.OnRotateLeft;
+                @RotateRight.started += instance.OnRotateRight;
+                @RotateRight.performed += instance.OnRotateRight;
+                @RotateRight.canceled += instance.OnRotateRight;
+                @RotateA.started += instance.OnRotateA;
+                @RotateA.performed += instance.OnRotateA;
+                @RotateA.canceled += instance.OnRotateA;
+                @RotateD.started += instance.OnRotateD;
+                @RotateD.performed += instance.OnRotateD;
+                @RotateD.canceled += instance.OnRotateD;
+                @RotateW.started += instance.OnRotateW;
+                @RotateW.performed += instance.OnRotateW;
+                @RotateW.canceled += instance.OnRotateW;
+                @RotateS.started += instance.OnRotateS;
+                @RotateS.performed += instance.OnRotateS;
+                @RotateS.canceled += instance.OnRotateS;
+                @ReverseThrust.started += instance.OnReverseThrust;
+                @ReverseThrust.performed += instance.OnReverseThrust;
+                @ReverseThrust.canceled += instance.OnReverseThrust;
+            }
+        }
+    }
+    public DroneActions @Drone => new DroneActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnRotation(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnExplosion(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnRotation(InputAction.CallbackContext context);
+    }
+    public interface IDroneActions
+    {
+        void OnThrust(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
+        void OnRotateLeft(InputAction.CallbackContext context);
+        void OnRotateRight(InputAction.CallbackContext context);
+        void OnRotateA(InputAction.CallbackContext context);
+        void OnRotateD(InputAction.CallbackContext context);
+        void OnRotateW(InputAction.CallbackContext context);
+        void OnRotateS(InputAction.CallbackContext context);
+        void OnReverseThrust(InputAction.CallbackContext context);
     }
 }
