@@ -22,12 +22,13 @@ namespace Game.Scripts.Player
         private CinemachineVirtualCamera _followCam;
         [SerializeField]
         private GameObject _model;
+        [SerializeField] private GameObject _playerModel;
 
         public bool explosionTrue;
         private InputPlayerActions _input;
 
         private Drone _drone;
-
+        private Forklift _forklift;
 
         private void OnEnable()
         {
@@ -43,6 +44,17 @@ namespace Game.Scripts.Player
 
         private void Start()
         {
+
+            _model.SetActive(false);
+            _forklift = GameObject.Find("Fork_Lift").GetComponent<Forklift>();
+
+            {
+                if (_forklift==null)
+                {
+                    Debug.LogError("No forklift present.");
+                }
+            }
+
             _drone = GameObject.Find("DroneMaster").GetComponent<Drone>();
 
             if (_drone==null)
@@ -77,6 +89,20 @@ namespace Game.Scripts.Player
             {
                 _input.Player.Enable();
             }
+
+            if (_forklift._inDriveMode==true)
+            {
+                _input.Player.Movement.Disable();
+                _model.SetActive(true);
+                _playerModel.SetActive(false);
+            }
+            else
+            {        
+                _model.SetActive(false);
+                _input.Player.Movement.Enable();
+                _playerModel.SetActive(true);     
+            }
+            
         }
 
         private void CalcutateMovement()

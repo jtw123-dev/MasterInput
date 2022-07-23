@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 namespace Game.Scripts.LiveObjects
 {
@@ -16,12 +17,51 @@ namespace Game.Scripts.LiveObjects
         private CinemachineVirtualCamera _forkliftCam;
         [SerializeField]
         private GameObject _driverModel;
-        private bool _inDriveMode = false;
+        public bool _inDriveMode = false;
         [SerializeField]
         private InteractableZone _interactableZone;
 
         public static event Action onDriveModeEntered;
         public static event Action onDriveModeExited;
+        private bool _lifting, _lowering;
+
+        private InputPlayerActions _input;
+        
+        private void Start()
+        {
+            _input = new InputPlayerActions();
+            _input.Forklift.Enable();
+            _input.Forklift.Escape.performed += Escape_performed;
+            _input.Forklift.LiftUp.performed += LiftUp_performed;
+            _input.Forklift.LiftUp.canceled += LiftUp_canceled;
+            _input.Forklift.Lower.performed += Lower_performed;
+            _input.Forklift.Lower.canceled += Lower_canceled;
+        }
+
+        private void Lower_canceled(InputAction.CallbackContext obj)
+        {
+            _lowering = false;
+        }
+
+        private void Lower_performed(InputAction.CallbackContext obj)
+        {
+            _lowering = true;
+        }
+
+        private void LiftUp_canceled(InputAction.CallbackContext obj)
+        {
+            _lifting = false;
+        }
+
+        private void LiftUp_performed(InputAction.CallbackContext obj)
+        {
+            _lifting = true;
+        }
+
+        private void Escape_performed(InputAction.CallbackContext obj)
+        {
+                ExitDriveMode();
+        }
 
         private void OnEnable()
         {
@@ -45,8 +85,7 @@ namespace Game.Scripts.LiveObjects
             _inDriveMode = false;
             _forkliftCam.Priority = 9;            
             _driverModel.SetActive(false);
-            onDriveModeExited?.Invoke();
-            
+            onDriveModeExited?.Invoke();           
         }
 
         private void Update()
@@ -54,36 +93,29 @@ namespace Game.Scripts.LiveObjects
             if (_inDriveMode == true)
             {
                 LiftControls();
-                CalcutateMovement();
-                if (Input.GetKeyDown(KeyCode.Escape))
-                    ExitDriveMode();
+                CalcutateMovement();         
             }
-
         }
 
         private void CalcutateMovement()
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-            var direction = new Vector3(0, 0, v);
-            var velocity = direction * _speed;
+            var rotateDirection = _input.Forklift.Rotation.ReadValue<float>();
+            transform.Rotate(transform.up, rotateDirection);
 
-            transform.Translate(velocity * Time.deltaTime);
-
-            if (Mathf.Abs(v) > 0)
-            {
-                var tempRot = transform.rotation.eulerAngles;
-                tempRot.y += h * _speed / 2;
-                transform.rotation = Quaternion.Euler(tempRot);
-            }
+            var move = _input.Forklift.Drive.ReadValue<Vector2>();
+            transform.Translate(new Vector3(move.x, 0, move.y) * Time.deltaTime * 5);
         }
 
         private void LiftControls()
         {
-            if (Input.GetKey(KeyCode.R))
+            if (_lifting==true)
+            {
                 LiftUpRoutine();
-            else if (Input.GetKey(KeyCode.T))
+            }              
+            else if (_lowering==true)
+            {
                 LiftDownRoutine();
+            }             
         }
 
         private void LiftUpRoutine()

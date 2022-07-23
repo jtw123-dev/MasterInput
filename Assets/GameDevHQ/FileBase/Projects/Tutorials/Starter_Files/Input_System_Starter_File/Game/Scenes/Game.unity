@@ -5313,6 +5313,7 @@ MonoBehaviour:
   _detonator: {fileID: 1493860244}
   _followCam: {fileID: 1266060213}
   _model: {fileID: 1509951838}
+  _playerModel: {fileID: 1030046597}
   explosionTrue: 0
 --- !u!1001 &369121378
 PrefabInstance:
@@ -6174,6 +6175,7 @@ MonoBehaviour:
   _liftSpeed: 1
   _forkliftCam: {fileID: 972744896}
   _driverModel: {fileID: 1509951838}
+  _inDriveMode: 0
   _interactableZone: {fileID: 1277958656}
 --- !u!65 &402105200
 BoxCollider:
@@ -11445,7 +11447,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 4.49994e-39, z: 1.65555e-39, w: 2.2e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -17481,6 +17483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef20d1c5eefcf406485a3abb3a7ad9e2, type: 3}
+--- !u!1 &1030046597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2825158248505566826, guid: eb469f7767c8d4c62a31578a58b0129d, type: 3}
+  m_PrefabInstance: {fileID: 1096566375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1033212758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: fb55bc095104c444693576b2d9184da6, type: 3}
@@ -19698,9 +19705,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 359860634}
     m_Modifications:
+    - target: {fileID: 2825158248505566822, guid: eb469f7767c8d4c62a31578a58b0129d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2825158248505566826, guid: eb469f7767c8d4c62a31578a58b0129d, type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825158248505566826, guid: eb469f7767c8d4c62a31578a58b0129d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2825158248506063360, guid: eb469f7767c8d4c62a31578a58b0129d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32141,7 +32156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c14085171003ee2478ef40ebd5fcbee8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.9247
+      value: 9.59
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c14085171003ee2478ef40ebd5fcbee8, type: 3}
       propertyPath: m_LocalRotation.w
