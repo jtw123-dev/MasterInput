@@ -2896,6 +2896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 1
   _zoneType: 1
   _zoneID: 6
   _requiredID: 5
@@ -2905,6 +2906,7 @@ MonoBehaviour:
   _zoneKeyInput: E
   _keyState: 0
   _marker: {fileID: 1808342870}
+  _isPunchHeld: 0
 --- !u!1001 &198573547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7572,6 +7574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 0
   _zoneType: 1
   _zoneID: 1
   _requiredID: 0
@@ -7582,6 +7585,7 @@ MonoBehaviour:
   _zoneKeyInput: E
   _keyState: 0
   _marker: {fileID: 605505802}
+  _isPunchHeld: 0
 --- !u!4 &482471386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5779097134961922744, guid: 1d553f90302742946bbf45996165949c, type: 3}
@@ -9369,6 +9373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 1
+  _boxTrue: 0
   _zoneType: 1
   _zoneID: 2
   _requiredID: 1
@@ -9378,6 +9383,7 @@ MonoBehaviour:
   _zoneKeyInput: Space
   _keyState: 0
   _marker: {fileID: 1331263896}
+  _isPunchHeld: 0
 --- !u!1001 &565131287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11447,7 +11453,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 4.49994e-39, z: 1.65555e-39, w: 2.2e-44}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -16352,6 +16358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 0
   _zoneType: 1
   _zoneID: 7
   _requiredID: 6
@@ -16361,6 +16368,7 @@ MonoBehaviour:
   _zoneKeyInput: 
   _keyState: 0
   _marker: {fileID: 1578479318}
+  _isPunchHeld: 0
 --- !u!1 &967188505
 GameObject:
   m_ObjectHideFlags: 3
@@ -22427,6 +22435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 0
   _zoneType: 0
   _zoneID: 0
   _requiredID: -1
@@ -22438,6 +22447,7 @@ MonoBehaviour:
   _zoneKeyInput: E
   _keyState: 0
   _marker: {fileID: 1583429342}
+  _isPunchHeld: 0
 --- !u!1001 &1178759240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23728,6 +23738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 0
   _zoneType: 1
   _zoneID: 5
   _requiredID: 4
@@ -23737,6 +23748,7 @@ MonoBehaviour:
   _zoneKeyInput: E
   _keyState: 0
   _marker: {fileID: 1840441541}
+  _isPunchHeld: 0
 --- !u!4 &1277958657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5779097134961922744, guid: 1d553f90302742946bbf45996165949c, type: 3}
@@ -32031,6 +32043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 0
   _zoneType: 1
   _zoneID: 4
   _requiredID: 3
@@ -32040,6 +32053,7 @@ MonoBehaviour:
   _zoneKeyInput: E
   _keyState: 0
   _marker: {fileID: 1041737524}
+  _isPunchHeld: 0
 --- !u!1001 &1810757429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35268,6 +35282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionTrue: 0
+  _boxTrue: 0
   _zoneType: 2
   _zoneID: 3
   _requiredID: 2
@@ -35279,6 +35294,7 @@ MonoBehaviour:
   _zoneKeyInput: E
   _keyState: 1
   _marker: {fileID: 55150249}
+  _isPunchHeld: 0
 --- !u!4 &2030128479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 83b308def8e254c558e3d7c4628b4fe2, type: 3}

@@ -24,6 +24,7 @@ namespace Game.Scripts.LiveObjects
         }
         [SerializeField]
         private bool _explosionTrue;
+        [SerializeField] bool _boxTrue;
         private InputPlayerActions _input;
         [SerializeField]
         private ZoneType _zoneType;
@@ -48,6 +49,8 @@ namespace Game.Scripts.LiveObjects
         [SerializeField]
         private GameObject _marker;      
         private bool _inHoldState = false;
+        private Crate _crate;
+        public bool _isPunchHeld;
         
         private static int _currentZoneID = 0;
         public static int CurrentZoneID
@@ -69,12 +72,75 @@ namespace Game.Scripts.LiveObjects
 
         private void Start()
         {
+            _crate = GameObject.Find("Breakable_Wooden_Crate").GetComponent<Crate>();
+
+            if (_crate==null)
+            {
+                Debug.LogError("crate is null");
+            }
             _input = new InputPlayerActions();
             _input.Player.Enable();
             _input.Player.Interaction.performed += Interaction_performed;
             _input.Player.Interaction.canceled += Interaction_canceled;
             _input.Player.Explosion.performed += Explosion_performed;
+            _input.Player.QuickPunch.performed += QuickPunch_performed;
+            _input.Player.SlowPunch.performed += SlowPunch_performed;
+            _input.Player.SlowPunch.canceled += SlowPunch_canceled;
         }
+
+        private void SlowPunch_canceled(InputAction.CallbackContext obj)
+        {
+            _isPunchHeld = false;
+        }
+
+        private void SlowPunch_performed(InputAction.CallbackContext obj)
+        {
+            if (_inZone == true && _explosionTrue == false && _boxTrue == true)
+            {
+                _isPunchHeld = true;
+                if (_keyState != KeyState.PressHold)
+                {
+                    //press
+                    switch (_zoneType)
+                    {
+                        case ZoneType.Action:
+                            if (_actionPerformed == false)
+                            {
+                                Debug.Log("Slow punch performed");
+                                PerformAction();
+                                _actionPerformed = true;
+                                UIManager.Instance.DisplayInteractableZoneMessage(false);
+                            }
+                            break;
+                    }
+                }
+            }
+          
+        }
+
+        private void QuickPunch_performed(InputAction.CallbackContext obj)
+        {
+            if (_inZone == true && _explosionTrue == false &&_boxTrue==true)
+            {
+
+                if (_keyState != KeyState.PressHold)
+                {
+                    //press
+                    switch (_zoneType)
+                    {                    
+                        case ZoneType.Action:
+                            if (_actionPerformed == false)
+                            {
+
+                                PerformAction();
+                                _actionPerformed = true;
+                                UIManager.Instance.DisplayInteractableZoneMessage(false);
+                            }
+                            break;
+                    }
+                }              
+            }
+            }
 
         private void Explosion_performed(InputAction.CallbackContext obj)
         {       
@@ -100,9 +166,8 @@ namespace Game.Scripts.LiveObjects
         }
 
         private void Interaction_performed(InputAction.CallbackContext obj)
-        { 
-            
-            if (_inZone == true && _explosionTrue==false)
+        {      
+            if (_inZone == true && _explosionTrue==false &&_boxTrue==false)
             {
 
                 if ( _keyState != KeyState.PressHold)

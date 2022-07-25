@@ -37,7 +37,7 @@ namespace Game.Scripts.LiveObjects
                     BreakPart();
                     StartCoroutine(PunchDelay());
                 }
-                else if(_brakeOff.Count == 0)
+                else if(_brakeOff.Count <= 0)
                 {
                     _isReadyToBreak = false;
                     _crateCollider.enabled = false;
@@ -57,10 +57,35 @@ namespace Game.Scripts.LiveObjects
 
         public void BreakPart()
         {
-            int rng = Random.Range(0, _brakeOff.Count);
-            _brakeOff[rng].constraints = RigidbodyConstraints.None;
-            _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force);
-            _brakeOff.Remove(_brakeOff[rng]);            
+            if (_interactableZone._isPunchHeld==false)
+            {
+                int rng = Random.Range(0, _brakeOff.Count);
+                Debug.Log(rng);
+                _brakeOff[rng].constraints = RigidbodyConstraints.None;
+                _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force);
+                _brakeOff.Remove(_brakeOff[rng]);
+            }
+          else
+            {
+                for (int i =0; i<7; i++)
+                {
+                    
+                        if (_brakeOff.Count <= 0)
+                        {
+                            _isReadyToBreak = false;
+                            _crateCollider.enabled = false;
+                            _interactableZone.CompleteTask(6);
+                            Debug.Log("Completely Busted");
+                        }
+
+                    
+                    int rng = Random.Range(0, _brakeOff.Count);
+                    Debug.Log(rng);
+                    _brakeOff[rng].constraints = RigidbodyConstraints.None;
+                    _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force);
+                    _brakeOff.Remove(_brakeOff[rng]);
+                }
+            }
         }
 
         IEnumerator PunchDelay()

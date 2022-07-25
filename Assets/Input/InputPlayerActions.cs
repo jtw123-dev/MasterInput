@@ -57,6 +57,22 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""QuickPunch"",
+                    ""type"": ""Button"",
+                    ""id"": ""3dfca9ff-9766-4d59-b1de-fd9535fddac2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap""
+                },
+                {
+                    ""name"": ""SlowPunch"",
+                    ""type"": ""Button"",
+                    ""id"": ""f50a563f-2a96-4cc3-917c-a19406a1af5e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -180,6 +196,28 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ce102f0-39b5-4260-a7b2-385132c0edcc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""MultiTap(tapCount=5)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickPunch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11a73074-b404-4e93-b155-eb8ac546ad1b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowPunch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -541,6 +579,8 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
         m_Player_Explosion = m_Player.FindAction("Explosion", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
+        m_Player_QuickPunch = m_Player.FindAction("QuickPunch", throwIfNotFound: true);
+        m_Player_SlowPunch = m_Player.FindAction("SlowPunch", throwIfNotFound: true);
         // Drone
         m_Drone = asset.FindActionMap("Drone", throwIfNotFound: true);
         m_Drone_Thrust = m_Drone.FindAction("Thrust", throwIfNotFound: true);
@@ -613,6 +653,8 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Explosion;
     private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_Rotation;
+    private readonly InputAction m_Player_QuickPunch;
+    private readonly InputAction m_Player_SlowPunch;
     public struct PlayerActions
     {
         private @InputPlayerActions m_Wrapper;
@@ -622,6 +664,8 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
         public InputAction @Explosion => m_Wrapper.m_Player_Explosion;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
+        public InputAction @QuickPunch => m_Wrapper.m_Player_QuickPunch;
+        public InputAction @SlowPunch => m_Wrapper.m_Player_SlowPunch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -646,6 +690,12 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Rotation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotation;
+                @QuickPunch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickPunch;
+                @QuickPunch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickPunch;
+                @QuickPunch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickPunch;
+                @SlowPunch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowPunch;
+                @SlowPunch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowPunch;
+                @SlowPunch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowPunch;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -665,6 +715,12 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
+                @QuickPunch.started += instance.OnQuickPunch;
+                @QuickPunch.performed += instance.OnQuickPunch;
+                @QuickPunch.canceled += instance.OnQuickPunch;
+                @SlowPunch.started += instance.OnSlowPunch;
+                @SlowPunch.performed += instance.OnSlowPunch;
+                @SlowPunch.canceled += instance.OnSlowPunch;
             }
         }
     }
@@ -838,6 +894,8 @@ public class @InputPlayerActions : IInputActionCollection, IDisposable
         void OnExplosion(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
+        void OnQuickPunch(InputAction.CallbackContext context);
+        void OnSlowPunch(InputAction.CallbackContext context);
     }
     public interface IDroneActions
     {

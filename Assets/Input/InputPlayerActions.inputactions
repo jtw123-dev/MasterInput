@@ -44,6 +44,22 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "QuickPunch",
+                    "type": "Button",
+                    "id": "3dfca9ff-9766-4d59-b1de-fd9535fddac2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap"
+                },
+                {
+                    "name": "SlowPunch",
+                    "type": "Button",
+                    "id": "f50a563f-2a96-4cc3-917c-a19406a1af5e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
                 }
             ],
             "bindings": [
@@ -167,6 +183,28 @@
                     "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3ce102f0-39b5-4260-a7b2-385132c0edcc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "MultiTap(tapCount=5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11a73074-b404-4e93-b155-eb8ac546ad1b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
